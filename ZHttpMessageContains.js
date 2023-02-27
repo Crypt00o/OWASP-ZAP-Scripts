@@ -102,7 +102,7 @@ function httpMessageContains(utils,fuzzResult){
 	  
 	  const searchPoll= getSearchPoll(fuzzResult.getHttpMessage(), parameters.requestOrResponseOrAll, parameters.bodyOrHeadOrAll)
 	  
-	  if (parameters.ignoreCase=="true" ){
+	  if (["true","yes"].includes(parameters.ignoreCase) ){
 			return  searchPoll.toLowerCase().includes(parameters.textToMatch.toLowerCase())
 	  }
 
