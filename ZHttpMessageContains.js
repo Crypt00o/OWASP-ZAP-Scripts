@@ -117,9 +117,9 @@ function httpMessageContains(utils,fuzzResult){
 function showHttpMessageContainsResult(utils,fuzzResult){
 
 	  if (httpMessageContains(utils, fuzzResult)){
-			fuzzResult.addCustomState("Key Custom State", "Found");
+			fuzzResult.addCustomState("Key Custom State", "Text Found");
 	  } else{
-			fuzzResult.addCustomState("Key Custom State", "Not Found");
+			fuzzResult.addCustomState("Key Custom State", "Text Not Found");
 	  }
 }
 
