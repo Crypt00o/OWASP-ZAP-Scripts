@@ -4,6 +4,7 @@
 
 |Script-Name | Catogtory | functions |
 |------------|-----------|-----------|
-|`ZHttpMessageContians.js`| Fuzzing |checking if req,res contains spefic string while fuzzing |
+|`ZHttpMessageContians.js`| Fuzzing Message Processor | checking if req,res contains spefic string while fuzzing |
+|`ZHttpMessageExtract.js`|Fuzzing Message Processor | checking if req,res contains spefic string by regex and extract it while fuzzing |
 
 
