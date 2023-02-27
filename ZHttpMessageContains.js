@@ -33,9 +33,9 @@ function parseParameters(parameters){
 	  	  
 	  return {
 			textToMatch:String(parameters.get("text")),
-			requestOrResponseOrAll:String(parseOptionsOrDefault(parameters.get("request-response-all"), ["req","res","request","response","all"], "all")),
-			bodyOrHeadOrAll:String(parseOptionsOrDefault(parameters.get("body-head-all"), ["body","head","header","all"], "all")),
-			ignoreCase:String(parseOptionsOrDefault(parameters.get("ignore-case"), ["true","false"], "true"))
+			requestOrResponseOrAll:String(parseOptionsOrDefault(parameters.get("request-response-all"), ["req","res","request","response","all","full"], "all")),
+			bodyOrHeadOrAll:String(parseOptionsOrDefault(parameters.get("body-head-all"), ["body","head","header","headers","all","full"],"all")),
+			ignoreCase:String(parseOptionsOrDefault(parameters.get("ignore-case"), ["true","false","yes","no"], "true"))
 	  }
 
 }
@@ -63,14 +63,14 @@ function getSearchPoll(rawHttpMessage,requestOrResponseOrAll,bodyOrHeadOrAll){
 	  
 	  const httpMessage = processHttpMessage(rawHttpMessage)
 
-	  if(requestOrResponseOrAll == "req" || requestOrResponseOrAll=="request" || requestOrResponseOrAll=="all"){
+	  if(["req","request","all","full"].includes(requestOrResponseOrAll) ){
 		
-			if(bodyOrHeadOrAll=="body" || bodyOrHeadOrAll=="all"  ){
+			if(["body","all","full"].includes( bodyOrHeadOrAll)  ){
 				  toSearchIn= `${toSearchIn}
 				  ${httpMessage.req.body}`
 			}
 			
-			if(bodyOrHeadOrAll=="head" || bodyOrHeadOrAll=="header"  || bodyOrHeadOrAll=="all"  ){
+			if(["head","header","headers","all","full"].includes( bodyOrHeadOrAll)  ){
 				   toSearchIn= `${toSearchIn}
 				  ${httpMessage.req.head}`
 
@@ -78,14 +78,14 @@ function getSearchPoll(rawHttpMessage,requestOrResponseOrAll,bodyOrHeadOrAll){
 			  
 	  }
 	  
-	  if(requestOrResponseOrAll == "res" || requestOrResponseOrAll=="response" || requestOrResponseOrAll=="all"){
+	  if(["res","response","all","full"].includes(requestOrResponseOrAll) ){
 		
-			if(bodyOrHeadOrAll=="body" || bodyOrHeadOrAll=="all"  ){
+			if(["body","all","full"].includes( bodyOrHeadOrAll) ){
 				  toSearchIn= `${toSearchIn}
 				  ${httpMessage.res.body}`
 			}
 			
-			if(bodyOrHeadOrAll=="head" || bodyOrHeadOrAll=="header"  || bodyOrHeadOrAll=="all"  ){
+			if(["head","header","headers","all","full"].includes( bodyOrHeadOrAll)  ){
 				   toSearchIn= `${toSearchIn}
 				  ${httpMessage.res.head}`
 			}
