@@ -167,7 +167,7 @@ function processResult(utils, fuzzResult){
 }
 
 function getRequiredParamsNames(){
-	return ["text"];
+	return ["regex"];
 }
 
 function getOptionalParamsNames(){
