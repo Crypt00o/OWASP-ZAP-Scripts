@@ -35,7 +35,7 @@ function parseParameters(parameters){
 			textToMatch:String(parameters.get("text")),
 			requestOrResponseOrAll:String(parseOptionsOrDefault(parameters.get("request-response-all"), ["req","res","request","response","all","full"], "all")),
 			bodyOrHeadOrAll:String(parseOptionsOrDefault(parameters.get("body-head-all"), ["body","head","header","headers","all","full"],"all")),
-			ignoreCase:String(parseOptionsOrDefault(parameters.get("ignore-case"), ["true","false","yes","no"], "true"))
+			ignoreCase:String(parseOptionsOrDefault(parameters.get("ignore-case"), ["true","false","yes","no","y"], "true"))
 	  }
 
 }
@@ -102,7 +102,7 @@ function httpMessageContains(utils,fuzzResult){
 	  
 	  const searchPoll= getSearchPoll(fuzzResult.getHttpMessage(), parameters.requestOrResponseOrAll, parameters.bodyOrHeadOrAll)
 	  
-	  if (["true","yes"].includes(parameters.ignoreCase) ){
+	  if (["true","yes","y"].includes(parameters.ignoreCase) ){
 			return  searchPoll.toLowerCase().includes(parameters.textToMatch.toLowerCase())
 	  }
 
